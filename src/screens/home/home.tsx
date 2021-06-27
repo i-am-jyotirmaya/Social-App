@@ -1,10 +1,11 @@
 import React from "react";
+import Feed from "../../components/feed/feed";
 
 const Home: React.FC = () => {
     return (
         <React.Fragment>
-            <h1>SITE UNDER CONSTRUCTION</h1>
-            <h2>WILL BE UP AND RUNNING SOON</h2>
+            <h1 style={{ textAlign: "center" }}>Feed</h1>
+            <Feed />
         </React.Fragment>
     );
 };

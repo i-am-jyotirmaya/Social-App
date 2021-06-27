@@ -2,7 +2,7 @@ import axios from "axios";
 import { Post } from "../interfaces/post";
 import { User } from "../interfaces/user";
 
-const BASE_URL = "https://jsonplaceholder.typicode.com/";
+const BASE_URL = "https://jsonplaceholder.typicode.com";
 
 export const user = {
     getAllUsers: async () => {

@@ -1,0 +1,92 @@
+@import "../../shared/scss/variables";
+
+#user-search-container {
+    $search-inner-size: 1em;
+    $search-inner-font-weight: 300;
+
+    height: 1.75em;
+    width: 13.5em;
+    min-width: 7.8em;
+    flex: 0 1 auto;
+    position: relative;
+
+    .search-inner {
+        position: absolute;
+        font-size: $search-inner-size;
+        top: 50%;
+        color: #aaa;
+    }
+
+    .close {
+        @extend .search-inner;
+        font-size: 0.8em;
+        right: 0.45em;
+        transform: translateY(-50%);
+    }
+    .search-icon {
+        @extend .search-inner;
+        font-size: 0.8em;
+        left: 0.45em;
+        transform: translateY(-50%);
+        pointer-events: none;
+    }
+    .placeholder {
+        @extend .search-inner;
+        left: 50%;
+        line-height: $search-inner-size;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        pointer-events: none;
+        font-weight: $search-inner-font-weight;
+        &__search-icon {
+            font-size: 0.8em;
+            margin-right: 0.3em;
+        }
+    }
+
+    input {
+        width: 100%;
+        border: solid 0.0859em #ddd;
+        font-size: 1em;
+        line-height: 1.125em;
+        background-color: $offset;
+        padding: 0.24em 0.3125em 0.24em 1.375em;
+        outline-color: #ddd;
+        outline-offset: 0;
+        outline-width: 0.0625em;
+        transition: all 200ms linear;
+        font-weight: $search-inner-font-weight;
+        &:focus {
+            outline-offset: 0.7em;
+            outline-color: transparent;
+        }
+        &::placeholder {
+            font-size: $search-inner-size;
+            font-weight: $search-inner-font-weight;
+            color: #aaa;
+        }
+    }
+    div.user-search-suggestion {
+        width: 28.125em;
+        height: 12.5em;
+        max-height: 12.5em;
+        background-color: $light;
+        position: relative;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 999;
+        top: 0.625em;
+        filter: drop-shadow(0 0 0.625em rgba($dark, 0.2));
+        border-radius: calc($search-inner-size / 2);
+
+        .pointer {
+            height: 0.625em;
+            width: 0.625em;
+            background-color: $light;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%) rotate(45deg);
+            top: -0.1875em;
+        }
+    }
+}

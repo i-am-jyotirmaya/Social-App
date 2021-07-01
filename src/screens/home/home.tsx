@@ -1,10 +1,11 @@
 import React from "react";
 import Feed from "../../components/feed/feed";
+import Navbar from "../../components/navbar/Navbar";
 
 const Home: React.FC = () => {
     return (
         <React.Fragment>
-            <h1 style={{ textAlign: "center" }}>Feed</h1>
+            <Navbar />
             <Feed />
         </React.Fragment>
     );

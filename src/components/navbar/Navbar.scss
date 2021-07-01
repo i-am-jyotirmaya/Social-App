@@ -1,0 +1,35 @@
+@import "../../shared/scss/variables";
+#nav {
+    background-color: $light;
+    position: sticky;
+    top: 0;
+    left: 0;
+    box-shadow: 0 0.2em 0.5em rgba($dark, 0.1);
+    .navbar {
+        max-width: 50em;
+        margin: auto;
+        padding: 1em;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        @media (max-width: 800px) {
+            max-width: 100%;
+        }
+        #logo {
+            font-weight: 900;
+            flex: 1 9999 0%;
+            p {
+                margin: 0;
+                background: $primary-gradient;
+                -webkit-text-fill-color: transparent;
+                color: transparent;
+                background-clip: text;
+            }
+        }
+
+        #nav-container {
+            flex: 1 0 0%;
+        }
+    }
+}

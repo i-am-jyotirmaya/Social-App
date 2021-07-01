@@ -1,3 +1,4 @@
+@import "../../shared/scss/variables";
 .feed {
     max-width: 50em;
     margin: auto;
@@ -11,25 +12,21 @@
 
     &__post {
         text-align: initial;
-        background-color: white;
+        background-color: $light;
         border-radius: 0.4em;
         margin: 1em 0;
-        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+        box-shadow: 0 1px 3px rgba($dark, 0.12), 0 1px 2px rgba($dark, 0.24);
         overflow: hidden;
 
         &__divider {
             border: none;
-            border-top: solid 1px black;
+            border-top: solid 1px $dark;
         }
 
         &__username {
             line-height: 1em;
             padding-bottom: 0.4em;
-            background: linear-gradient(
-                90deg,
-                hsla(29, 92%, 70%, 1) 0%,
-                hsla(0, 87%, 73%, 1) 100%
-            );
+            background: $primary-gradient;
             padding: 0.8em;
         }
 

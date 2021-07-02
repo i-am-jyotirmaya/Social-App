@@ -4,6 +4,10 @@ import { faSearch, faTimesCircle } from "@fortawesome/free-solid-svg-icons";
 import { useEffect, useRef, useState } from "react";
 import React from "react";
 import { motion } from "framer-motion";
+import { useAppSelector } from "../../redux/utils";
+import { useDispatch } from "react-redux";
+import { search } from "./actions";
+import ListItem from "../list-item/ListItem";
 
 const SearchBar = () => {
     const inputRef = useRef<HTMLInputElement>(null);
@@ -12,12 +16,7 @@ const SearchBar = () => {
 
     useEffect(() => {
         const listener = (e: MouseEvent) => {
-            if (
-                e.target !== document.querySelector("#user-search-container") &&
-                e.target !==
-                    document.querySelector("#user-search-container>input") &&
-                e.target !== document.querySelector("#user-search-suggestion")
-            ) {
+            if (!(e.target as any).closest("#user-search-container")) {
                 setFocused(false);
             }
         };
@@ -26,6 +25,12 @@ const SearchBar = () => {
             document.body.removeEventListener("click", listener);
         };
     }, []);
+
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        dispatch(search(value));
+    }, [value]);
 
     const handleInputFocused = () => {
         setFocused(true);
@@ -38,6 +43,14 @@ const SearchBar = () => {
 
     const handleInput = (e: any) => {
         setValue(e.target.value);
+    };
+
+    const searchResults = useAppSelector((state) => state.search.users);
+
+    const buildSuggestionList = () => {
+        return searchResults.map((e) => (
+            <ListItem title={e.username} subtitle={e.name} key={e.id} />
+        ));
     };
 
     return (
@@ -81,6 +94,20 @@ const SearchBar = () => {
                     className="user-search-suggestion"
                     id="user-search-suggestion">
                     <div className="pointer"></div>
+                    <div
+                        className="content"
+                        id="user-search-suggestion-content">
+                        <h4 className="quark">Search Results</h4>
+                        <div className="content__list">
+                            {searchResults.length ? (
+                                <ul>{buildSuggestionList()}</ul>
+                            ) : (
+                                <p className="content__list__fallback">
+                                    Nothing here to display
+                                </p>
+                            )}
+                        </div>
+                    </div>
                 </motion.div>
             )}
         </div>

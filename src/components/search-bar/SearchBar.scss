@@ -4,11 +4,12 @@
     $search-inner-size: 1em;
     $search-inner-font-weight: 300;
 
-    height: 1.75em;
-    width: 13.5em;
+    height: 2em;
+    width: 12em;
     min-width: 7.8em;
     flex: 0 1 auto;
     position: relative;
+    max-height: 2em;
 
     .search-inner {
         position: absolute;
@@ -67,9 +68,9 @@
         }
     }
     div.user-search-suggestion {
-        width: 28.125em;
-        height: 12.5em;
-        max-height: 12.5em;
+        width: 27.5em;
+        height: 14.5em;
+        max-height: 14.5em;
         background-color: $light;
         position: relative;
         left: 50%;
@@ -78,6 +79,7 @@
         top: 0.625em;
         filter: drop-shadow(0 0 0.625em rgba($dark, 0.2));
         border-radius: calc(#{$search-inner-size} / 2);
+        padding: 1em;
 
         .pointer {
             height: 0.625em;
@@ -87,6 +89,28 @@
             left: 50%;
             transform: translateX(-50%) rotate(45deg);
             top: -0.1875em;
+        }
+        .content {
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            h4 {
+                margin: 0;
+            }
+            &__list {
+                flex: 1;
+                overflow: auto;
+                ul {
+                    margin: 0;
+                    padding-left: 0;
+                }
+                &__fallback {
+                    display: grid;
+                    place-content: center;
+                    height: 100%;
+                    margin: 0;
+                }
+            }
         }
     }
 }

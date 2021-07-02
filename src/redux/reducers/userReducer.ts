@@ -11,7 +11,7 @@ const initialState: {
 export const userReducer = (state = initialState, action: AppAction<any>) => {
     switch (action.type) {
         case SET_USERS:
-            return { users: action.data };
+            return { users: action.data as User[] };
         default:
             return state;
     }

@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Post as PostType } from "../../interfaces/post";
+import { useAppSelector } from "../../redux/utils";
 import Post from "../post/post";
 import Spinner from "../spinner/spinner";
 import { getPosts } from "./actions";
@@ -17,13 +18,17 @@ const Feed = () => {
         dispatch(getPosts());
     }, []);
 
+    const searchResults = useAppSelector((state) => state.user.users);
+
     return (
         <div className="feed">
             {postList.length ? (
                 postList.map((e) => (
                     <Post
                         key={e.id}
-                        username={e.userId.toString()}
+                        username={(() =>
+                            searchResults.find((el) => el.id === e.userId)
+                                ?.username || e.userId.toString())()}
                         title={e.title}
                         body={e.body}
                     />

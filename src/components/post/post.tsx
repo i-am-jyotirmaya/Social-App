@@ -1,5 +1,7 @@
+import { faComment, faHeart } from "@fortawesome/free-solid-svg-icons";
 import React from "react";
 import PostProps from "../../interfaces/props/PostProps";
+import IconButton from "../icon-button/IconButton";
 
 const Post: React.FC<PostProps> = ({ username, title, body, children }) => {
     return (
@@ -13,6 +15,10 @@ const Post: React.FC<PostProps> = ({ username, title, body, children }) => {
                     {children && children}
                     {body}
                 </div>
+            </div>
+            <div className="feed__post__footer">
+                <IconButton icon={faHeart} />
+                <IconButton icon={faComment} />
             </div>
         </div>
     );

@@ -30,6 +30,39 @@
 
         #nav-container {
             flex: 1 0 0%;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            .inner {
+                padding-left: 2em;
+                display: flex;
+                .button {
+                    flex: 1;
+                    background: none;
+                    border: none;
+                    appearance: none;
+                    padding: 0.5em;
+                    width: 2.5em;
+                    height: 2.5em;
+                    border-radius: 100vh;
+                    font-size: 1em;
+                    display: grid;
+                    place-content: center;
+                    color: $dark;
+                    &:hover {
+                        background: rgba($primary1, 0.1);
+                        color: $primary2;
+                    }
+                    &.active {
+                        background: rgba($primary1, 0.3);
+                        color: $primary2;
+                    }
+
+                    &:not(:first-child) {
+                        margin-left: 1em;
+                    }
+                }
+            }
         }
     }
 }

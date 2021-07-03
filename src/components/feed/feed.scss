@@ -41,5 +41,14 @@
             &__content {
             }
         }
+
+        &__footer {
+            padding: 0.8em;
+            > * {
+                &:not(:first-child) {
+                    margin-left: 0.5em;
+                }
+            }
+        }
     }
 }
